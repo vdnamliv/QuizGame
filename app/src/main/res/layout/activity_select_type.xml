@@ -11,8 +11,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="150dp"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="16dp"
+            android:orientation="vertical"
             android:text="Total Score: 0 pts" />
 
         <GridLayout
@@ -20,10 +21,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/textViewTotalScore"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="10dp"
             android:columnCount="1"
             android:columnOrderPreserved="false"
-            android:padding="16dp">
+            android:padding="10dp">
 
             <!-- Theme 1 -->
             <LinearLayout

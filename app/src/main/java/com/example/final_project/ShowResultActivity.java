@@ -34,9 +34,8 @@ public class ShowResultActivity extends AppCompatActivity {
         completeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Chuyển về MainActivity
-                Intent intent = new Intent(ShowResultActivity.this, MainActivity.class);
-                startActivity(intent);
+                // Chuyển về Màn hình 2
+                showResultfor2(score);
                 finish();
             }
         });
@@ -68,5 +67,11 @@ public class ShowResultActivity extends AppCompatActivity {
                 //startActivity(Intent.createChooser(shareIntent, "Chia sẻ điểm số qua..."));
             }
         });
+    }
+    private void showResultfor2(int score) {
+        Intent intent = new Intent(ShowResultActivity.this, Select_type.class);
+        intent.putExtra("score", score);
+        startActivity(intent);
+        //finish();
     }
 }

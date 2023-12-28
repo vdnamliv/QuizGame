@@ -221,4 +221,7 @@ public class GameActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
+    //Lưu số điểm cho màn hình số 2
+
 }

@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Switch;
 
@@ -19,11 +20,19 @@ import java.io.InputStreamReader;
 public class Select_type extends AppCompatActivity {
 
     private Button btnGeography, btnHistory, btnScience, btnArt, btnViewAllQuestions;
-
+    private TextView textViewTotalScore;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_type);
+
+        textViewTotalScore = findViewById(R.id.textViewTotalScore);
+        Intent intent = getIntent();
+        if (intent.hasExtra("score")){
+            int score = intent.getIntExtra("score", 0);
+            textViewTotalScore.setText("Total Score: " + score);
+        }
+
 
         btnGeography = findViewById(R.id.btnGeography);
         btnHistory = findViewById(R.id.btnHistory);
