@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_geo"
+        android:title="Địa lý"/>
+    <item
+        android:id="@+id/menu_his"
+        android:title="Lịch sử"/>
+    <item
+        android:id="@+id/menu_sci"
+        android:title="Khoa học"/>
+    <item
+        android:id="@+id/menu_art"
+        android:title="Nghệ thuật"/>
+    <item
+        android:id="@+id/action_search"
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="Search"
+        app:showAsAction="always"
+        app:actionViewClass="androidx.appcompat.widget.SearchView" />
+</menu>
+

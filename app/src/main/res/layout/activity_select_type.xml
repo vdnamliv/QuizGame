@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textViewTotalScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="16dp"
+            android:text="Total Score: 0 pts" />
+
+        <GridLayout
+            android:id="@+id/gridLayoutThemes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewTotalScore"
+            android:layout_marginTop="16dp"
+            android:columnCount="1"
+            android:columnOrderPreserved="false"
+            android:padding="16dp">
+
+            <!-- Theme 1 -->
+            <LinearLayout
+                android:id="@+id/linearTheme1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/imageViewTheme1"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:src="@drawable/geo"
+                    android:scaleType="centerCrop"/>
+
+                <Button
+                    android:id="@+id/btnGeography"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Địa lý"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <!-- Theme 2 -->
+            <LinearLayout
+                android:id="@+id/linearTheme2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/imageViewTheme2"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:src="@drawable/his"
+                    android:scaleType="centerCrop"/>
+
+                <Button
+                    android:id="@+id/btnHistory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lịch sử"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <!-- Theme 3 -->
+            <LinearLayout
+                android:id="@+id/linearTheme3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/imageViewTheme3"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:src="@drawable/sci"
+                    android:scaleType="centerCrop"/>
+
+                <Button
+                    android:id="@+id/btnScience"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Khoa học"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <!-- Theme 4 -->
+            <LinearLayout
+                android:id="@+id/linearTheme4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/imageViewTheme4"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:src="@drawable/art"
+                    android:scaleType="centerCrop"/>
+
+                <Button
+                    android:id="@+id/btnArt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nghệ thuật"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+        </GridLayout>
+
+
+        <Switch
+            android:id="@+id/switchDifficult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/gridLayoutThemes"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:checked="false"
+            android:minHeight="120dp"
+            android:text="Cấp độ khó:" />
+
+       <Button
+            android:id="@+id/btnViewAllQuestions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Danh sách câu hỏi"
+            android:layout_below="@id/switchDifficult"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
+</ScrollView>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+        <style name="ButtonStyle">
+            <item name="android:layout_width">0dp</item>
+            <item name="android:layout_height">wrap_content</item>
+            <item name="android:layout_weight">1</item>
+            <item name="android:background">@drawable/button_background</item>
+        </style>
+
+        <style name="SCBSwitch" parent="Theme.AppCompat.Light">
+            <!-- active thumb & track color (30% transparency) -->
+            <item name="colorControlActivated">#9932CC</item>
+
+            <!-- inactive thumb color -->
+            <item name="colorSwitchThumbNormal">#9932CC
+            </item>
+
+            <!-- inactive track color (30% transparency) -->
+            <item name="android:colorForeground">#42221f1f
+            </item>
+        </style>
+
+</resources>
