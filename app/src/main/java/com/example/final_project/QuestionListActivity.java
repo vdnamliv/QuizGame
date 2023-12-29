@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class QuestionListActivity extends AppCompatActivity {
@@ -56,33 +57,34 @@ public class QuestionListActivity extends AppCompatActivity {
 
             // Lấy câu hỏi và đáp án từ danh sách đã load
             String selectedQuestionWithAnswer = all.get(position);
+
             // Tách câu hỏi và đáp án
-            //String[] questionParts = selectedQuestionWithAnswer.split("Đáp án đúng:");
-            String[] questionParts = selectedQuestionWithAnswer.split("\\n(?=[a-d]\\))");
+            String[] parts = selectedQuestionWithAnswer.split("\\n\\n");
 
-            Log.d("QuestionListActivity", "Questionpart2: " + questionParts);
+            // Lấy câu hỏi
+            String question = parts[0].replace("Câu hỏi: ", "");
 
-            if (questionParts.length >= 2) {
-                // Lấy câu hỏi và câu trả lời từ mảng questionParts
-                String question = questionParts[0].trim();
+            // Lấy đáp án đúng
+            String[] answerLines = parts[1].split("\n");
+            String correctAnswer = answerLines[answerLines.length - 1].trim();
 
-                //Log.d("QuestionListActivity", "Question1: " + question);
-                String correctAnswer = questionParts[1].trim();
+            // Tách các đáp án a, b, c, d
+            String answerOptions = parts[1].replaceAll("[a-d]\\) ", "");
+            Log.d("QuestionListActivity", "6: " + answerOptions);
 
+            // Tách các đáp án a, b, c, d
+            String[] answerArray = answerOptions.split("\n");
+            List<String> answerList = Arrays.asList(answerArray);
+
+            if (answerList.size() >= 4) {
                 // Chuyển sang màn hình chi tiết (Màn hình số 6) với thông tin câu hỏi và câu trả lời
                 Intent intent = new Intent(QuestionListActivity.this, QuestionDetailActivity.class);
                 intent.putExtra("question", question);
                 intent.putExtra("correctAnswer", correctAnswer);
-
-                // Tách các đáp án từ câu hỏi và đưa vào Intent
-                String[] answerOptions = question.split("\n");
-                //Log.d("QuestionListActivity", "Question2: " + question);
-                if (answerOptions.length >= 5) {
-                    intent.putExtra("optionA", answerOptions[1].trim());
-                    intent.putExtra("optionB", answerOptions[2].trim());
-                    intent.putExtra("optionC", answerOptions[3].trim());
-                    intent.putExtra("optionD", answerOptions[4].trim());
-                }
+                intent.putExtra("optionA", answerList.get(0).trim());
+                intent.putExtra("optionB", answerList.get(1).trim());
+                intent.putExtra("optionC", answerList.get(2).trim());
+                intent.putExtra("optionD", answerList.get(3).trim());
 
                 startActivity(intent);
             }
@@ -184,13 +186,31 @@ public class QuestionListActivity extends AppCompatActivity {
 
             // Đọc từng dòng từ tệp và thêm vào danh sách câu hỏi
             while ((line = reader.readLine()) != null) {
-                if (line.startsWith("Câu hỏi:") || line.startsWith("a) ")|| line.startsWith("b) ")
-                        || line.startsWith("c) ") || line.startsWith("d) ")|| line.startsWith("Đáp án đúng:")){
+                // Kiểm tra xem dòng có bắt đầu bằng "Câu hỏi:" không
+                if (line.startsWith("Câu hỏi:")) {
+                    // Nếu có, thêm câu hỏi cũ vào danh sách nếu có
+                    if (questionBuilder.length() > 0) {
+                        questions.add(questionBuilder.toString().trim());
+                    }
+                    // Bắt đầu câu hỏi mới
+                    questionBuilder = new StringBuilder();
+                }
+
+                // Kiểm tra xem dòng có chứa "Đáp án đúng:" không
+                if (line.startsWith("Đáp án đúng:")) {
+                    // Không thêm dòng này vào câu hỏi, chỉ tách answerOptions
+                    String answerOptions = line.replace("Đáp án đúng:", "").trim();
+                    questionBuilder.append(answerOptions).append("\n");
+                } else {
+                    // Thêm dòng vào câu hỏi
                     questionBuilder.append(line).append("\n");
                 }
             }
 
-            questions.add(questionBuilder.toString().trim());
+            // Thêm câu hỏi cuối cùng vào danh sách
+            if (questionBuilder.length() > 0) {
+                questions.add(questionBuilder.toString().trim());
+            }
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -205,6 +225,13 @@ public class QuestionListActivity extends AppCompatActivity {
 
         return questions;
     }
+
+
+
+
+
+
+
 
 
     //thanh search chưa làm được

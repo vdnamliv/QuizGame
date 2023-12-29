@@ -32,16 +32,16 @@ public class QuestionDetailActivity extends AppCompatActivity {
 
             // Display answer options in the TextViews
             TextView optionATextView = findViewById(R.id.optionATextView);
-            optionATextView.setText(" " + optionA);
+            optionATextView.setText("A) " + optionA);
 
             TextView optionBTextView = findViewById(R.id.optionBTextView);
-            optionBTextView.setText(" " + optionB);
+            optionBTextView.setText("B) " + optionB);
 
             TextView optionCTextView = findViewById(R.id.optionCTextView);
-            optionCTextView.setText(" " + optionC);
+            optionCTextView.setText("C) " + optionC);
 
             TextView optionDTextView = findViewById(R.id.optionDTextView);
-            optionDTextView.setText(" " + optionD);
+            optionDTextView.setText("D) " + optionD);
 
             // Display the correct answer
             TextView correctAnswerTextView = findViewById(R.id.correctAnswerTextView);

@@ -3,6 +3,7 @@ package com.example.final_project;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -65,7 +66,7 @@ public class GameActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if (intent != null) {
             String themeFileName = intent.getStringExtra("themeFileName");
-
+            saveThemeFileName(themeFileName); //lưu chủ đề đang chơi lại
             // Kiểm tra xem themeFileName có giá trị hay không
             if (themeFileName != null && !themeFileName.isEmpty()) {
                 // Đọc dữ liệu từ file và tạo danh sách câu hỏi
