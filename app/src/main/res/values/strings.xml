@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Final_Project</string>
+    <string-array name="simple_items">
+        <item name="item1">geo</item>
+        <item name="item2">his</item>
+        <item name="item3">sci</item>
+        <item name="item4">art</item>
+    </string-array>
 </resources>

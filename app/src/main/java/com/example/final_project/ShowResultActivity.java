@@ -49,9 +49,9 @@ public class ShowResultActivity extends AppCompatActivity {
                 String currentThemeFileName = preferences.getString("themeFileName", "");
 
                 Intent intent = new Intent(ShowResultActivity.this, GameActivity.class);
-
+//ấn nút chơi lại --> sang màn hình chơi game
                 intent.putExtra("themeFileName", currentThemeFileName);
-
+// sau khi sang màn hình chơi --> sử dụng chủ đề đã lưu
                 startActivity(intent);
 
                 finish();
@@ -65,6 +65,11 @@ public class ShowResultActivity extends AppCompatActivity {
                 String shareMessage = "Total Score: " + score;
 
                 Intent shareIntent = new Intent(Intent.ACTION_SEND);
+
+                //Intent.ACTION_SEND: Là một hằng số có sẵn trong Android, đại diện cho hành động "gửi".
+                // Nó được sử dụng khi bạn muốn chia sẻ dữ liệu từ ứng dụng của mình với các ứng dụng khác.
+                // Ví dụ, bạn có thể sử dụng nó để chia sẻ văn bản, hình ảnh, hoặc các loại dữ liệu khác với ứng dụng khác trên thiết bị.
+
                 shareIntent.setType("text/plain");
                 shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
 

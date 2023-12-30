@@ -17,6 +17,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.widget.SearchView;
 
+import com.google.android.material.textfield.TextInputLayout;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -29,9 +31,11 @@ public class QuestionListActivity extends AppCompatActivity {
 
     private ListView questionListView;
     private List<String> allQuestions;
+    private List<String> geoQuest, hisQuest, sciQuest, artQuest, nullQuest;
     private ArrayAdapter<String> adapter;
     private List<String> all;
-    private View textViewTopic;
+    private TextView textViewTopic;
+    private TextInputLayout filter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +49,47 @@ public class QuestionListActivity extends AppCompatActivity {
         textViewTopic = findViewById(R.id.textViewTopic);
         questionListView = findViewById(R.id.questionListView);
         allQuestions = loadAllQuestions();
+        geoQuest = loadQuestions("geo");
+        hisQuest = loadQuestions("his");
+        sciQuest = loadQuestions("sci");
+        artQuest = loadQuestions("art");
+        nullQuest = new ArrayList<>();
         //simple_list_item_1 : là layout có sẵn mà ListView sẽ hiển thị
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, allQuestions);
         questionListView.setAdapter(adapter);
-
-
+        filter = findViewById(R.id.textField);
+        filter.setEndIconOnClickListener(view ->{
+            String ques = filter.getEditText().getText().toString();
+            if (ques.equals("geo"))
+            {
+                adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, geoQuest);
+                questionListView.setAdapter(adapter);
+            }
+            else if (ques.equals("his"))
+            {
+                adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, hisQuest);
+                questionListView.setAdapter(adapter);
+            }
+            else if (ques.equals("sci"))
+            {
+                adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, sciQuest);
+                questionListView.setAdapter(adapter);
+            }
+            else if (ques.equals("art"))
+            {
+                adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, artQuest);
+                questionListView.setAdapter(adapter);
+            }
+            else if (ques.equals(""))
+            {
+                adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, allQuestions);
+                questionListView.setAdapter(adapter);
+            }
+            else {
+                adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, nullQuest);
+                questionListView.setAdapter(adapter);
+            }
+        });
         //Ấn hiển thị chi tiết từng câu hỏi
         questionListView.setOnItemClickListener((parent, view, position, id) -> {
 
@@ -89,10 +129,6 @@ public class QuestionListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
-
     }
 
     //chỉ đọc câu hỏi :
@@ -111,6 +147,20 @@ public class QuestionListActivity extends AppCompatActivity {
             List<String> fileQuestions = readQuestionsFromRaw(resourceId);
             questions.addAll(fileQuestions);
         }
+
+        return questions;
+    }
+    private List<String> loadQuestions(String fileName) {
+        List<String> questions = new ArrayList<>();
+        Resources resources = getResources();
+
+
+        // Lấy ID tài nguyên của tệp tin trong thư mục raw
+        int resourceId = resources.getIdentifier(fileName, "raw", getPackageName());
+
+        // Đọc nội dung từ tệp tin và thêm vào danh sách câu hỏi
+        List<String> fileQuestions = readQuestionsFromRaw(resourceId);
+        questions.addAll(fileQuestions);
 
         return questions;
     }
@@ -225,14 +275,6 @@ public class QuestionListActivity extends AppCompatActivity {
 
         return questions;
     }
-
-
-
-
-
-
-
-
 
     //thanh search chưa làm được
 
