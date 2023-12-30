@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,7 +30,7 @@ public class QuestionListActivity extends AppCompatActivity {
 
     private ListView questionListView;
     private List<String> allQuestions;
-    private List<String> geoQuest, hisQuest, sciQuest, artQuest, nullQuest;
+    private List<String> geoQuest, hisQuest, sciQuest, artQuest, geoQuestHard, hisQuestHard, sciQuestHard, artQuestHard, nullQuest;
     private ArrayAdapter<String> adapter;
     private List<String> all;
     private TextView textViewTopic;
@@ -53,6 +52,10 @@ public class QuestionListActivity extends AppCompatActivity {
         hisQuest = loadQuestions("his");
         sciQuest = loadQuestions("sci");
         artQuest = loadQuestions("art");
+        geoQuestHard = loadQuestions("geohard");
+        hisQuestHard = loadQuestions("hishard");
+        sciQuestHard = loadQuestions("scihard");
+        artQuestHard = loadQuestions("arthard");
         nullQuest = new ArrayList<>();
         //simple_list_item_1 : là layout có sẵn mà ListView sẽ hiển thị
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, allQuestions);
@@ -78,6 +81,26 @@ public class QuestionListActivity extends AppCompatActivity {
             else if (ques.equals("art"))
             {
                 adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, artQuest);
+                questionListView.setAdapter(adapter);
+            }
+            else if (ques.equals("hishard"))
+            {
+                adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, hisQuestHard);
+                questionListView.setAdapter(adapter);
+            }
+            else if (ques.equals("geohard"))
+            {
+                adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, geoQuestHard);
+                questionListView.setAdapter(adapter);
+            }
+            else if (ques.equals("scihard"))
+            {
+                adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, sciQuestHard);
+                questionListView.setAdapter(adapter);
+            }
+            else if (ques.equals("arthard"))
+            {
+                adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, artQuestHard);
                 questionListView.setAdapter(adapter);
             }
             else if (ques.equals(""))
@@ -137,7 +160,7 @@ public class QuestionListActivity extends AppCompatActivity {
         Resources resources = getResources();
 
         // Lấy danh sách tên tệp tin trong thư mục raw
-        String[] questionFiles = {"geo", "his", "sci", "art"};
+        String[] questionFiles = {"geo", "his", "sci", "art", "geohard", "hishard" , "arthard" , "scihard"};
 
         for (String fileName : questionFiles) {
             // Lấy ID tài nguyên của tệp tin trong thư mục raw

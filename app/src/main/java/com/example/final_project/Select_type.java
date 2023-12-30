@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Switch;
@@ -39,40 +40,58 @@ public class Select_type extends AppCompatActivity {
         btnScience = findViewById(R.id.btnScience);
         btnArt = findViewById(R.id.btnArt);
         btnViewAllQuestions = findViewById(R.id.btnViewAllQuestions);
-        //Switch switchDifficult = findViewById(R.id.switchDifficult);
+        Switch switchDifficult = findViewById(R.id.switchDifficult);
 
         // Set sự kiện cho từng nút chủ đề :
         btnGeography.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startQuestionAnswerActivity("geo");
+                if(switchDifficult.isChecked()) {
+                    startQuestionAnswerActivity("geohard");
+                }
+                else startQuestionAnswerActivity("geo");
             }
         });
 
         btnHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startQuestionAnswerActivity("his");
+                if(switchDifficult.isChecked()) {
+                    startQuestionAnswerActivity("hishard");
+                }
+                else startQuestionAnswerActivity("his");
             }
         });
 
         btnScience.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startQuestionAnswerActivity("sci");
+                if(switchDifficult.isChecked()) {
+                    startQuestionAnswerActivity("scihard");
+                }
+                else startQuestionAnswerActivity("sci");
             }
         });
 
         btnArt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startQuestionAnswerActivity("art");
+                if(switchDifficult.isChecked()) {
+                    startQuestionAnswerActivity("arthard");
+                }
+                else startQuestionAnswerActivity("art");
             }
         });
 
         btnViewAllQuestions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) { startQuestionListAcivity(); }
+        });
+
+        switchDifficult.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            }
         });
 
     }

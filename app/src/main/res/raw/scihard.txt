@@ -1,0 +1,39 @@
+Câu hỏi: Nguyên tử có bao nhiêu hạt cơ bản?
+
+a) 2
+b) 3
+c) 4
+d) 5
+Đáp án đúng: a) 2
+
+Câu hỏi: Loại tế bào nào không có hạt nhân?
+
+a) Tế bào thực bào
+b) Tế bào nhân bào
+c) Tế bào vi sinh bào
+d) Tế bào thụ tinh
+Đáp án đúng: a) Tế bào thực bào
+
+Câu hỏi: Quang phổ của ánh sáng trắng khi đi qua một prisma sẽ phân chia thành mấy màu chính?
+
+a) 5
+b) 6
+c) 7
+d) 8
+Đáp án đúng: c) 7
+
+Câu hỏi: Nguyên tắc nào của Albert Einstein mô tả mối quan hệ giữa năng lượng và khối lượng?
+
+a) Nguyên tắc Bò-rô
+b) Nguyên tắc E = mc^2
+c) Nguyên tắc Newton
+d) Nguyên tắc Schrödinger
+Đáp án đúng: b) Nguyên tắc E = mc^2
+
+Câu hỏi: Loại sóng nào có thể truyền qua không khí và không cần môi trường chất rắn hoặc chất lỏng?
+
+a) Sóng âm
+b) Sóng hấp dẫn
+c) Sóng siêu âm
+d) Sóng điện từ
+Đáp án đúng: d) Sóng điện từ

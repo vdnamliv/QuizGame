@@ -83,9 +83,6 @@ public class GameActivity extends AppCompatActivity {
                         }
                     });
                     return; // Kết thúc hàm để tránh tiếp tục thực hiện mã khi không có dữ liệu câu hỏi
-                } else {
-                    // Hiển thị thông báo nếu không có câu hỏi
-                    Toast.makeText(this, "Không tìm thấy câu hỏi.", Toast.LENGTH_SHORT).show();
                 }
             }
         }
@@ -134,7 +131,6 @@ public class GameActivity extends AppCompatActivity {
 
             if (userAnswer.equals(correctAnswer)) {
                 // Người dùng trả lời đúng
-                Toast.makeText(this, "Đúng!", Toast.LENGTH_SHORT).show();
                 score++;
 
                 // Chuyển sang câu hỏi tiếp theo nếu còn
@@ -146,12 +142,8 @@ public class GameActivity extends AppCompatActivity {
                 }
             } else {
                 // Người dùng trả lời sai
-                Toast.makeText(this, "Sai! Chuyển sang màn hình kết quả.", Toast.LENGTH_SHORT).show();
                 showResult(score);
             }
-        } else {
-            // Người dùng chưa chọn đáp án
-            Toast.makeText(this, "Hãy chọn một đáp án.", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -163,7 +155,6 @@ public class GameActivity extends AppCompatActivity {
 
             // Kiểm tra chuỗi null hoặc trống rỗng
             if (fileName == null || fileName.isEmpty()) {
-                Toast.makeText(this, "Tên file không hợp lệ", Toast.LENGTH_SHORT).show();
                 finish();
                 return questionList;
             }
@@ -175,9 +166,10 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
 
-            // Sử dụng tên file để xây dựng ID tài nguyên
+            // lấy ID của một tài nguyên dựa trên fileName, loại tài nguyên : raw
             int resourceId = getResources().getIdentifier(fileName, "raw", getPackageName());
             InputStream inputStream = getResources().openRawResource(resourceId);
+            // chuyển inputstream -> reader --> BufferedReader đọc dữ liệu từ reader
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
             String line;
             String currentQuestion = null;
@@ -210,7 +202,6 @@ public class GameActivity extends AppCompatActivity {
             inputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
-            Toast.makeText(this, "Lỗi khi tải câu hỏi", Toast.LENGTH_SHORT).show();
         }
 
         return questionList;
